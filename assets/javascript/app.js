@@ -98,11 +98,12 @@ function triviaQuestions(){
 
 			for (var j in temp){
 			timer()
-			$("#question").html("<h3>"+ trivia[j] + "</h3>");
-			$("#answer1").html("<h3>"+ trivia[j] + "</h3>");
-			$("#answer2").html("<h3>"+ trivia[j] + "</h3>");
-			$("#answer3").html("<h3>"+ trivia[j] + "</h3>");
-			$("#answer4").html("<h3>"+ trivia[j] + "</h3>");
+			console.log(temp[j])
+			// $("#question").html("<h3>"+ temp[j]+ "</h3>");
+			// $("#answer1").html("<h3>"+ temp[j]+ "</h3>");
+			// $("#answer2").html("<h3>"+ temp[j]+ "</h3>");
+			// $("#answer3").html("<h3>"+ temp[j] + "</h3>");
+			// $("#answer4").html("<h3>"+ temp[j]+ "</h3>");
 			}
 	}
 }
