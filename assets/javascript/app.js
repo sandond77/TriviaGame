@@ -81,12 +81,42 @@ var trivia = {
 	// },
 }
 
+var time = 30;
+var tick;
+var timeup = false;
+
 $(".start").click(function(){
 	$(".start").hide();
-	$("#question").text(trivia.question1.question);
-	$("#answer1").text(trivia.question1.answer1);
-	$("#answer2").text(trivia.question1.answer2);
-	$("#answer3").text(trivia.question1.answer3);
-	$("#answer4").text(trivia.question1.answer4);
+	triviaQuestions();
 })
 
+function triviaQuestions(){
+	for (var i in trivia) {
+		if (!trivia.hasOwnProperty(i)) continue;
+
+			var temp = trivia[i];
+
+			for (var j in temp){
+			// timer()
+			$("#question").html("<h3>"+ trivia[j] + "</h3>");
+			$("#answer1").html("<h3>"+ trivia[j] + "</h3>");
+			$("#answer2").html("<h3>"+ trivia[j] + "</h3>");
+			$("#answer3").html("<h3>"+ trivia[j] + "</h3>");
+			$("#answer4").html("<h3>"+ trivia[j] + "</h3>");
+			}
+	}
+}
+
+function timer(){
+	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
+	tick = setInterval(countdown,1000);
+}
+
+function countdown(){
+	time --;
+	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
+	if (time===0) {
+		timeup=true;
+		clearInterval(tick);
+	}
+}
