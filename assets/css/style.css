@@ -31,17 +31,5 @@ h1{
 	color: black;
 }
 
-#answer1:hover{
+.answer:hover{
 	background-color: grey;
-}
-
-#answer2:hover{
-	background-color: grey;
-}
-
-#answer3:hover{
-	background-color: grey;
-}
-#answer4:hover{
-	background-color: grey;
-}

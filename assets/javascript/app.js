@@ -4,7 +4,7 @@ var trivia = [
 		answer2:"Titanic(1997)",
 		answer3:"Gone with the Wind(1939)",
 		answer4:"Star Wars: The Force Awakens(2015)",
-		correct:"Avatar"
+		correct:"Avatar(2009)"
 	},
 
 	{question:"What is the most expensive movie production of all time?",
@@ -55,7 +55,7 @@ var trivia = [
 		correct:"King Arthur: Legend of the Sword (2017)"
 	},
 
-	{question:"What is the highest movie documentry of All Time?",
+	{question:"What is the highest grossing movie documentry of All Time?",
 		answer1:"Fahrenheight 9/11(2014)",
 		answer2:"March of the Penguins (2005)",
 		answer3:"Justin Bieber: Never Say Never (2011)",
@@ -84,51 +84,95 @@ var trivia = [
 var time = 30;
 var tick;
 var timeup = false;
-var int = 1;
+var int = 0;
+var correctAns;
+var right = 0;
+var wrong = 0;
+
+
+
 
 $(".start").click(function(){
 	$(".start").hide();
+	$(".score").hide();
 	triviaQuestions();
+	$(".answer").unbind('click').click(function(){
+		selected = $(this).text();
+		if (selected === correctAns){
+			right++;
+			console.log(int);
+			console.log("right " + right)
+			int++
+			reset(int)
+
+		} else {
+			wrong++;
+			console.log(int);
+			console.log("wrong " + wrong)
+			int++
+			reset(int)
+		}
+	})
 })
 
 
 //Use timeout to write every 30 seconds?
 function triviaQuestions(){
-	appender(0);
+	$(".trivia").show();
+	appender(int);
 	timer()
-	// for (var i = 1; i < 8; i++) {
-	// 	if (timeup===false) {
-	// 		$("#question").html("<h3>"+ trivia[i].question+ "</h3>");
-	// 		$("#answer1").html("<h3>"+ trivia[i].answer1+ "</h3>");
-	// 		$("#answer2").html("<h3>"+ trivia[i].answer2+ "</h3>");
-	// 		$("#answer3").html("<h3>"+ trivia[i].answer3+ "</h3>");
-	// 		$("#answer4").html("<h3>"+ trivia[i].answer4+ "</h3>");
-	// 	}
-	// }
 }
 
 function timer(){
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
 	tick = setInterval(countdown,1000);
-	int++;
 }
 
 function countdown(){
 	time --;
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
-	if (time===0 && int < 7) {
+	if (time===0 && int < 8) {
+		int++;
+		wrong++;
+		console.log("wrong " + wrong)
 		timeup=true;
-		clearInterval(tick);
-		time = 30;
-		appender(int);
-		timer()
+		reset(int)
+	} else if (int===8){
+		$(".trivia").hide();
+		$("#correct").html("<h3>"+ "Total Correct: " + right + "</h3>");
+		$("#wrong").html("<h3>"+ "Total Wrong: " + wrong + "</h3>");
+		$(".start").show();
+		$(".score").show();
 	}
 }
 
 function appender(arg){
-	$("#question").html("<h3>"+ trivia[arg].question+ "</h3>");
+		$("#question").html("<h3>"+ trivia[arg].question+ "</h3>");
 		$("#answer1").html("<h3>"+ trivia[arg].answer1+ "</h3>");
 		$("#answer2").html("<h3>"+ trivia[arg].answer2+ "</h3>");
 		$("#answer3").html("<h3>"+ trivia[arg].answer3+ "</h3>");
 		$("#answer4").html("<h3>"+ trivia[arg].answer4+ "</h3>");
+		correctAns = trivia[arg].correct;
+}
+
+function reset(arg){
+	if (int < 8) {
+		appender(arg);
+		clearInterval(tick);
+		time = 30;
+		timer();
+	}  else if (int===8){
+		clearInterval(tick);
+		$(".trivia").hide();
+		$("#correct").html("<h3>"+ "Total Correct: " + right + "</h3>");
+		$("#wrong").html("<h3>"+ "Total Wrong: " + wrong + "</h3>");
+		$(".start").show();
+		$(".score").show();
+		time = 30;
+		timeup = false;
+		int = 0;
+		right = 0;
+		wrong = 0;
+	}
+
 }
