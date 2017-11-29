@@ -119,7 +119,9 @@ function countdown(){
 	if (time===0) {
 		timeup=true;
 		clearInterval(tick);
+		time = 30;
 		appender(int);
+		timer()
 	}
 }
 
