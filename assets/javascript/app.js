@@ -1,5 +1,5 @@
 var trivia = [
-	{question:"What is the highest grossing movie of all time?",
+	{question:"What is the highest grossing movie of all time? (not taking in account inflation)",
 		answer1:"Avatar(2009)",
 		answer2:"Titanic(1997)",
 		answer3:"Gone with the Wind(1939)",
@@ -116,7 +116,7 @@ function timer(){
 function countdown(){
 	time --;
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
-	if (time===0) {
+	if (time===0 && int < 7) {
 		timeup=true;
 		clearInterval(tick);
 		time = 30;
