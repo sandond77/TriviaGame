@@ -5,6 +5,7 @@ var trivia = [
 		answer3:"Gone with the Wind(1939)",
 		answer4:"Star Wars: The Force Awakens(2015)",
 		correct:"Avatar(2009)"
+		image: https:images-na.ssl-images-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg;
 	},
 
 	{question:"What is the most expensive movie production of all time?",
@@ -13,6 +14,7 @@ var trivia = [
 		answer3:"Pirates of the Carribean: On Stranger Tides(2011)",
 		answer4:"John Carter(2012)",
 		correct:"Pirates of the Carribean: On Stranger Tides(2011)"
+		image: https:images-na.ssl-images-amazon.com/images/M/MV5BMjE5MjkwODI3Nl5BMl5BanBnXkFtZTcwNjcwMDk4NA@@._V1_SY1000_CR0,0,675,1000_AL_.jpg;
 	},
 
 	{question:"What is the highest grossing movie francise of all time?",
@@ -21,6 +23,7 @@ var trivia = [
 		answer3:"Marvel Cinematic Universe",
 		answer4:"James Bond",
 		correct:"Marvel Cinematic Universe"
+		image: https:upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/1200px-MarvelLogo.svg.png;
 	},
 
 	{question:"What is the highest grossing ANIMATED movie of all time?",
@@ -29,6 +32,7 @@ var trivia = [
 		answer3:"Frozen(2013)",
 		answer4:"Minions(2015)",
 		correct:"Frozen(2013)"
+		image: https:upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/1200px-MarvelLogo.svg.png;
 	},
 
 	{question:"What is the highest grossing ANIME movie of all time?",
@@ -90,8 +94,6 @@ var right = 0;
 var wrong = 0;
 
 
-
-
 $(".start").click(function(){
 	$(".start").hide();
 	$(".score").hide();
@@ -100,15 +102,11 @@ $(".start").click(function(){
 		selected = $(this).text();
 		if (selected === correctAns){
 			right++;
-			console.log(int);
-			console.log("right " + right)
 			int++
 			reset(int)
 
 		} else {
 			wrong++;
-			console.log(int);
-			console.log("wrong " + wrong)
 			int++
 			reset(int)
 		}
@@ -153,6 +151,7 @@ function appender(arg){
 		$("#answer3").html("<h3>"+ trivia[arg].answer3+ "</h3>");
 		$("#answer4").html("<h3>"+ trivia[arg].answer4+ "</h3>");
 		correctAns = trivia[arg].correct;
+		image = trivia[arg].image;
 }
 
 function reset(arg){
@@ -175,4 +174,8 @@ function reset(arg){
 		wrong = 0;
 	}
 
+}
+
+function imagecap{
+	if 
 }
