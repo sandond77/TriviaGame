@@ -84,41 +84,33 @@ var trivia = [
 var time = 30;
 var tick;
 var timeup = false;
+var int = 1;
 
 $(".start").click(function(){
 	$(".start").hide();
 	triviaQuestions();
 })
 
-function triviaQuestions(){
-	for (var i = 0; i < 8; i++) {
-		timer();
-		if (time > 0) {
-		$("#question").html("<h3>"+ trivia[i].question+ "</h3>");
-		$("#answer1").html("<h3>"+ trivia[i].answer1+ "</h3>");
-		$("#answer2").html("<h3>"+ trivia[i].answer2+ "</h3>");
-		$("#answer3").html("<h3>"+ trivia[i].answer3+ "</h3>");
-		$("#answer4").html("<h3>"+ trivia[i].answer4+ "</h3>");
-		}
-	}
-	// for (var i in trivia) {
-	// 	if (!trivia.hasOwnProperty(i)) continue;
-	// 		var temp = trivia[i];
 
-	// 		for (var j in temp){
-	// 		console.log(temp[j])
-	// 		$("#question").append("<h3>"+ temp[j]+ "</h3>");
-	// 		$("#answer1").append("<h3>"+ temp[j]+ "</h3>");
-	// 		$("#answer2").append("<h3>"+ temp[j]+ "</h3>");
-	// 		$("#answer3").append("<h3>"+ temp[j]+ "</h3>");
-	// 		$("#answer4").append("<h3>"+ temp[j]+ "</h3>");
-	// 		}
+//Use timeout to write every 30 seconds?
+function triviaQuestions(){
+	appender(0);
+	timer()
+	// for (var i = 1; i < 8; i++) {
+	// 	if (timeup===false) {
+	// 		$("#question").html("<h3>"+ trivia[i].question+ "</h3>");
+	// 		$("#answer1").html("<h3>"+ trivia[i].answer1+ "</h3>");
+	// 		$("#answer2").html("<h3>"+ trivia[i].answer2+ "</h3>");
+	// 		$("#answer3").html("<h3>"+ trivia[i].answer3+ "</h3>");
+	// 		$("#answer4").html("<h3>"+ trivia[i].answer4+ "</h3>");
+	// 	}
 	// }
 }
 
 function timer(){
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
 	tick = setInterval(countdown,1000);
+	int++;
 }
 
 function countdown(){
@@ -127,5 +119,14 @@ function countdown(){
 	if (time===0) {
 		timeup=true;
 		clearInterval(tick);
+		appender(int);
 	}
+}
+
+function appender(arg){
+	$("#question").html("<h3>"+ trivia[arg].question+ "</h3>");
+		$("#answer1").html("<h3>"+ trivia[arg].answer1+ "</h3>");
+		$("#answer2").html("<h3>"+ trivia[arg].answer2+ "</h3>");
+		$("#answer3").html("<h3>"+ trivia[arg].answer3+ "</h3>");
+		$("#answer4").html("<h3>"+ trivia[arg].answer4+ "</h3>");
 }
