@@ -80,24 +80,27 @@ var int = 0;
 var correctAns;
 var right = 0;
 var wrong = 0;
-var audioStart = new Audio("assets/audio/start.wav");
 var audioCorrect= new Audio("assets/audio/correct.wav");
 var audioWrong = new Audio("assets/audio/wrong.wav");
+var audioNew = new Audio("assets/audio/new.wav");
 
 
 $(".start").click(function(){
+	audioNew.play();
 	$(".start").hide();
 	$(".score").hide();
 	triviaQuestions();
 	$(".answer").unbind('click').click(function(){
 		selected = $(this).text();
 		if (selected === correctAns){
+			audioCorrect.play();
 			right++;
 			int++;
 			clearInterval(tick);
 			timeout();
 			setTimeout(function(){reset(int)},5000);
 		} else {
+			audioWrong.play();
 			wrong++;
 			int++;
 			clearInterval(tick);
@@ -107,8 +110,6 @@ $(".start").click(function(){
 	})
 })
 
-
-//Use timeout to write every 30 seconds?
 function triviaQuestions(){
 	$(".trivia").show();
 	appender(int);
@@ -124,6 +125,7 @@ function countdown(){
 	time --;
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
 	if (time===0) {
+		audioWrong.play();
 		int++;
 		wrong++;
 		timeup=true;
@@ -134,6 +136,7 @@ function countdown(){
 
 function appender(arg){
 		$("#correctanswer").empty();
+		audioNew.play();
 		$("#question").html("<h3>"+ trivia[arg].question+ "</h3>");
 		$("#answer1").html("<h3>"+ trivia[arg].answer1+ "</h3>");
 		$("#answer2").html("<h3>"+ trivia[arg].answer2+ "</h3>");
