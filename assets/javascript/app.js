@@ -70,22 +70,6 @@ var trivia = [
 		correct:"Fahrenheight 9/11(2014)",
 		image: "assets/images/fahrenheit.jpg"
 	}
-	// question9:{
-	// 	question:"What is the highest Grossing Movie of All Time? (Not adjusting for Inflation)",
-	// 	answer1:"Avatar(2009)",
-	// 	answer2:"Titanic(1997)",
-	// 	answer3:"Gone with the Wind(1939)",
-	// 	answer4:"Star Wars: The Force Awakens(2015)",
-	// 	correct:"Avatar"
-	// },
-	// question10:{
-	// 	question:"What is the highest Grossing Movie of All Time? (Not adjusting for Inflation)",
-	// 	answer1:"Avatar(2009)",
-	// 	answer2:"Titanic(1997)",
-	// 	answer3:"Gone with the Wind(1939)",
-	// 	answer4:"Star Wars: The Force Awakens(2015)",
-	// 	correct:"Avatar"
-	// },
 ]
 
 
@@ -96,7 +80,9 @@ var int = 0;
 var correctAns;
 var right = 0;
 var wrong = 0;
-// var delay = setTimeout(function(){reset(int)},5000);
+var audioStart = new Audio("assets/audio/start.wav");
+var audioCorrect= new Audio("assets/audio/correct.wav");
+var audioWrong = new Audio("assets/audio/wrong.wav");
 
 
 $(".start").click(function(){
