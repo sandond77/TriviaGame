@@ -5,7 +5,7 @@ var trivia = [
 		answer3:"Gone with the Wind(1939)",
 		answer4:"Star Wars: The Force Awakens(2015)",
 		correct:"Avatar(2009)",
-		image: "../images/avatar.jpg"
+		image: 'assets/images/avatar.jpg'
 	},
 
 	{question:"What is the most expensive movie production of all time?",
@@ -14,7 +14,7 @@ var trivia = [
 		answer3:"Pirates of the Carribean: On Stranger Tides(2011)",
 		answer4:"John Carter(2012)",
 		correct:"Pirates of the Carribean: On Stranger Tides(2011)",
-		image:"../images/pirates.jpg" 
+		image:"assets/images/pirates.jpg" 
 	},
 
 	{question:"What is the highest grossing movie francise of all time?",
@@ -23,7 +23,7 @@ var trivia = [
 		answer3:"Marvel Cinematic Universe",
 		answer4:"James Bond",
 		correct:"Marvel Cinematic Universe",
-		image: "../images/mcu.jpg"
+		image: "assets/images/mcu.jpg"
 	},
 
 	{question:"What is the highest grossing ANIMATED movie of all time?",
@@ -32,7 +32,7 @@ var trivia = [
 		answer3:"Frozen(2013)",
 		answer4:"Minions(2015)",
 		correct:"Frozen(2013)",
-		image: "../images/frozen.jpg"
+		image: "assets/images/frozen.jpg"
 	},
 
 	{question:"What is the highest grossing ANIME movie of all time?",
@@ -41,7 +41,7 @@ var trivia = [
 		answer3:"Kimi no Nawa/Your Name(2016)",
 		answer4:"Howl's Moving Castle(2004)",
 		correct:"Kimi no Nawa/Your Name(2016)",
-		image: "../images/kimi.jpg"
+		image: "assets/images/kimi.jpg"
 	},
 
 	{question:"According to Rotten Tomatoes, what is the top rated movie of time? (Based off the Tomatometer Score)",
@@ -50,7 +50,7 @@ var trivia = [
 		answer3:"Mad Max: Fury Road(2015)",
 		answer4:"The Wizard of Oz(1939)",
 		correct:"The Wizard of Oz(1939)",
-		image: "../images/wizard.jpg"
+		image: "assets/images/wizard.jpg"
 	},
 
 	{question:"Which of these movies is the biggest box office bomb? (had the highest net loss)",
@@ -59,7 +59,7 @@ var trivia = [
 		answer3:"Monster Trucks (2016)",
 		answer4:"47 Ronin (2013)",
 		correct:"King Arthur: Legend of the Sword (2017)",
-		image: "../images/arthur.jpg"
+		image: "assets/images/arthur.jpg"
 	},
 
 	{question:"What is the highest grossing movie documentry of All Time?",
@@ -68,7 +68,7 @@ var trivia = [
 		answer3:"Justin Bieber: Never Say Never (2011)",
 		answer4:"Earth (2009)",
 		correct:"Fahrenheight 9/11(2014)",
-		image: "../images/fahrenheit.jpg"
+		image: "assets/images/fahrenheit.jpg"
 	}
 	// question9:{
 	// 	question:"What is the highest Grossing Movie of All Time? (Not adjusting for Inflation)",
@@ -96,7 +96,7 @@ var int = 0;
 var correctAns;
 var right = 0;
 var wrong = 0;
-var delay = setTimeout(reset(int),5000);
+// var delay = setTimeout(function(){reset(int)},5000);
 
 
 $(".start").click(function(){
@@ -108,13 +108,15 @@ $(".start").click(function(){
 		if (selected === correctAns){
 			right++;
 			int++;
+			clearInterval(tick);
 			timeout();
-			delay;
+			setTimeout(function(){reset(int)},5000);
 		} else {
 			wrong++;
 			int++;
+			clearInterval(tick);
 			timeout();
-			delay;
+			setTimeout(function(){reset(int)},5000);
 		}
 	})
 })
@@ -129,25 +131,19 @@ function triviaQuestions(){
 
 function timer(){
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
-	tick = setInterval(countdown,1000);
+	tick = setInterval(function(){countdown()},1000);
 }
 
 function countdown(){
 	time --;
 	$("#time").html("<h3>"+"Time Remaining: " + time + " seconds" + "</h3>");
-	if (time===0 && int < 8) {
+	if (time===0) {
 		int++;
 		wrong++;
 		timeup=true;
 		timeout();
-		setTimeout(reset(int),5000)
-	} else if (int===8){
-		$(".trivia").hide();
-		$("#correct").html("<h3>"+ "Total Correct: " + right + "</h3>");
-		$("#wrong").html("<h3>"+ "Total Wrong: " + wrong + "</h3>");
-		$(".start").show();
-		$(".score").show();
-	}
+		setTimeout(function(){reset(int)},5000);
+	} 
 }
 
 function appender(arg){
@@ -163,8 +159,8 @@ function appender(arg){
 
 function reset(arg){
 	if (int < 8) {
-		appender(arg);
 		clearInterval(tick);
+		appender(arg);
 		time = 30;
 		timer();
 	}  else if (int===8){
@@ -175,27 +171,33 @@ function reset(arg){
 		$(".start").show();
 		$(".score").show();
 		time = 30;
-		timeup = false;
 		int = 0;
 		right = 0;
 		wrong = 0;
+		timeup = false;
 	}
 
 }
 
 function timeout(){
-	if (selected === correctAns){
-		$("#correctanswer").html("<h3>"+ "You got it correct!" + "</h3>" + "<br>" + "<img src="+correctAns+"height='200px' width='200px'>")
-		$("#answer1").empty();
-		$("#answer2").empty();
-		$("#answer3").empty();
-		$("#answer4").empty();
-	} else {
-		$("#correctanswer").html("<h3>"+ "The correct answer was: " + correctAns+ "</h3>" + "<br>" + "<img src="+correctAns+"height='200px' width='200px'>")
+	if (timeup===true){
+		$("#correctanswer").html("<h3>"+ "The correct answer was: " + "<br>" + correctAns + "</h3>" + "<br>" + "<img src=" + image + " height='275px' width='200px'>");
 		$("#question").html("<h3>"+ "Out of time!" + "</h3>");
 		$("#answer1").empty();
 		$("#answer2").empty();
 		$("#answer3").empty();
 		$("#answer4").empty();
-	}
+	} else if (selected === correctAns){
+		$("#correctanswer").html("<h3>"+ "You got it correct!" + "</h3>" + "<br>" + "<img src=" + image + " height='275px' width='200px'>")
+		$("#answer1").empty();
+		$("#answer2").empty();
+		$("#answer3").empty();
+		$("#answer4").empty();
+	} else if (selected != correctAns){
+		$("#correctanswer").html("<h3>"+ "The correct answer was: " + "<br>" + correctAns + "</h3>" + "<br>" + "<img src=" + image + " height='275px' width='200px'>");
+		$("#answer1").empty();
+		$("#answer2").empty();
+		$("#answer3").empty();
+		$("#answer4").empty();
+	} 
 }
