@@ -5,7 +5,7 @@ var trivia = [
 		answer3:"Gone with the Wind(1939)",
 		answer4:"Star Wars: The Force Awakens(2015)",
 		correct:"Avatar(2009)",
-		image: "../images/avatar.jpg";
+		image: "../images/avatar.jpg"
 	},
 
 	{question:"What is the most expensive movie production of all time?",
@@ -14,7 +14,7 @@ var trivia = [
 		answer3:"Pirates of the Carribean: On Stranger Tides(2011)",
 		answer4:"John Carter(2012)",
 		correct:"Pirates of the Carribean: On Stranger Tides(2011)",
-		image:"../images/pirates.jpg" ;
+		image:"../images/pirates.jpg" 
 	},
 
 	{question:"What is the highest grossing movie francise of all time?",
@@ -23,7 +23,7 @@ var trivia = [
 		answer3:"Marvel Cinematic Universe",
 		answer4:"James Bond",
 		correct:"Marvel Cinematic Universe",
-		image: "../images/mcu.jpg";
+		image: "../images/mcu.jpg"
 	},
 
 	{question:"What is the highest grossing ANIMATED movie of all time?",
@@ -32,7 +32,7 @@ var trivia = [
 		answer3:"Frozen(2013)",
 		answer4:"Minions(2015)",
 		correct:"Frozen(2013)",
-		image: "../images/frozen.jpg";
+		image: "../images/frozen.jpg"
 	},
 
 	{question:"What is the highest grossing ANIME movie of all time?",
@@ -96,6 +96,7 @@ var int = 0;
 var correctAns;
 var right = 0;
 var wrong = 0;
+var delay = setTimeout(reset(int),5000);
 
 
 $(".start").click(function(){
@@ -106,13 +107,14 @@ $(".start").click(function(){
 		selected = $(this).text();
 		if (selected === correctAns){
 			right++;
-			int++
-			reset(int)
-
+			int++;
+			timeout();
+			delay;
 		} else {
 			wrong++;
-			int++
-			reset(int)
+			int++;
+			timeout();
+			delay;
 		}
 	})
 })
@@ -136,9 +138,9 @@ function countdown(){
 	if (time===0 && int < 8) {
 		int++;
 		wrong++;
-		console.log("wrong " + wrong)
 		timeup=true;
-		reset(int)
+		timeout();
+		setTimeout(reset(int),5000)
 	} else if (int===8){
 		$(".trivia").hide();
 		$("#correct").html("<h3>"+ "Total Correct: " + right + "</h3>");
@@ -149,6 +151,7 @@ function countdown(){
 }
 
 function appender(arg){
+		$("#correctanswer").empty();
 		$("#question").html("<h3>"+ trivia[arg].question+ "</h3>");
 		$("#answer1").html("<h3>"+ trivia[arg].answer1+ "</h3>");
 		$("#answer2").html("<h3>"+ trivia[arg].answer2+ "</h3>");
@@ -180,6 +183,19 @@ function reset(arg){
 
 }
 
-function imagecap{
-	if 
+function timeout(){
+	if (selected === correctAns){
+		$("#correctanswer").html("<h3>"+ "You got it correct!" + "</h3>" + "<br>" + "<img src="+correctAns+"height='200px' width='200px'>")
+		$("#answer1").empty();
+		$("#answer2").empty();
+		$("#answer3").empty();
+		$("#answer4").empty();
+	} else {
+		$("#correctanswer").html("<h3>"+ "The correct answer was: " + correctAns+ "</h3>" + "<br>" + "<img src="+correctAns+"height='200px' width='200px'>")
+		$("#question").html("<h3>"+ "Out of time!" + "</h3>");
+		$("#answer1").empty();
+		$("#answer2").empty();
+		$("#answer3").empty();
+		$("#answer4").empty();
+	}
 }
