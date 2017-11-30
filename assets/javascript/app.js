@@ -4,8 +4,8 @@ var trivia = [
 		answer2:"Titanic(1997)",
 		answer3:"Gone with the Wind(1939)",
 		answer4:"Star Wars: The Force Awakens(2015)",
-		correct:"Avatar(2009)"
-		image: https:images-na.ssl-images-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_.jpg;
+		correct:"Avatar(2009)",
+		image: "../images/avatar.jpg";
 	},
 
 	{question:"What is the most expensive movie production of all time?",
@@ -13,8 +13,8 @@ var trivia = [
 		answer2:"Avengers: Age of Ultron(2015)",
 		answer3:"Pirates of the Carribean: On Stranger Tides(2011)",
 		answer4:"John Carter(2012)",
-		correct:"Pirates of the Carribean: On Stranger Tides(2011)"
-		image: https:images-na.ssl-images-amazon.com/images/M/MV5BMjE5MjkwODI3Nl5BMl5BanBnXkFtZTcwNjcwMDk4NA@@._V1_SY1000_CR0,0,675,1000_AL_.jpg;
+		correct:"Pirates of the Carribean: On Stranger Tides(2011)",
+		image:"../images/pirates.jpg" ;
 	},
 
 	{question:"What is the highest grossing movie francise of all time?",
@@ -22,8 +22,8 @@ var trivia = [
 		answer2:"Star Wars",
 		answer3:"Marvel Cinematic Universe",
 		answer4:"James Bond",
-		correct:"Marvel Cinematic Universe"
-		image: https:upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/1200px-MarvelLogo.svg.png;
+		correct:"Marvel Cinematic Universe",
+		image: "../images/mcu.jpg";
 	},
 
 	{question:"What is the highest grossing ANIMATED movie of all time?",
@@ -31,8 +31,8 @@ var trivia = [
 		answer2:"Zootopia(2016)",
 		answer3:"Frozen(2013)",
 		answer4:"Minions(2015)",
-		correct:"Frozen(2013)"
-		image: https:upload.wikimedia.org/wikipedia/commons/thumb/0/04/MarvelLogo.svg/1200px-MarvelLogo.svg.png;
+		correct:"Frozen(2013)",
+		image: "../images/frozen.jpg";
 	},
 
 	{question:"What is the highest grossing ANIME movie of all time?",
@@ -40,7 +40,8 @@ var trivia = [
 		answer2:"Pokemon: The First Movie(1999)",
 		answer3:"Kimi no Nawa/Your Name(2016)",
 		answer4:"Howl's Moving Castle(2004)",
-		correct:"Kimi no Nawa/Your Name(2016)"
+		correct:"Kimi no Nawa/Your Name(2016)",
+		image: "../images/kimi.jpg"
 	},
 
 	{question:"According to Rotten Tomatoes, what is the top rated movie of time? (Based off the Tomatometer Score)",
@@ -48,7 +49,8 @@ var trivia = [
 		answer2:"Citizen Kane(1941)",
 		answer3:"Mad Max: Fury Road(2015)",
 		answer4:"The Wizard of Oz(1939)",
-		correct:"The Wizard of Oz(1939)"
+		correct:"The Wizard of Oz(1939)",
+		image: "../images/wizard.jpg"
 	},
 
 	{question:"Which of these movies is the biggest box office bomb? (had the highest net loss)",
@@ -56,15 +58,17 @@ var trivia = [
 		answer2:"King Arthur: Legend of the Sword (2017)",
 		answer3:"Monster Trucks (2016)",
 		answer4:"47 Ronin (2013)",
-		correct:"King Arthur: Legend of the Sword (2017)"
+		correct:"King Arthur: Legend of the Sword (2017)",
+		image: "../images/arthur.jpg"
 	},
 
 	{question:"What is the highest grossing movie documentry of All Time?",
-		answer1:"Fahrenheight 9/11(2014)",
+		answer1:"Fahrenheit 9/11(2014)",
 		answer2:"March of the Penguins (2005)",
 		answer3:"Justin Bieber: Never Say Never (2011)",
 		answer4:"Earth (2009)",
-		correct:"Fahrenheight 9/11(2014)"
+		correct:"Fahrenheight 9/11(2014)",
+		image: "../images/fahrenheit.jpg"
 	}
 	// question9:{
 	// 	question:"What is the highest Grossing Movie of All Time? (Not adjusting for Inflation)",
