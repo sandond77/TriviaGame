@@ -152,6 +152,7 @@ function reset(arg){
 		appender(arg);
 		time = 30;
 		timer();
+		timeup = false;
 	}  else if (int===8){
 		clearInterval(tick);
 		$(".trivia").hide();
