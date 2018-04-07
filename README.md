@@ -12,4 +12,4 @@ If the player doesnt answer a question within 30 seconds, they will get that que
 At the end of the game, the player will be given a total of how many questions they got right and wrong.
 
 ## Link
-https://sandond77.github.io/TriviaGame/
+https://sandond77.github.io/TriviaNight/
